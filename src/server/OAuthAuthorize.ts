@@ -19,7 +19,7 @@ export class OAuthAuthorize {
    */
   public middleware = (req: Request, res: Response, next) => {
     const url = 'https://github.com/login/oauth/authorize?' + querystring.stringify({
-      client_id: this.config['client-id'],
+      client_id: this.config['client-id'] || process.env[this.config['client-id-env']],
       redirect_uri: this.getRedirectUrl(req),
       scope: 'read:org',
     })
