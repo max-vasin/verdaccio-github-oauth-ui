@@ -31,6 +31,16 @@ auth:
     org: $GITHUB_OAUTH_ORG # required, people within this org will be able to auth
 ```
 
+Or you can specify an environment variables for your github app client id and secret:
+
+```yaml
+middlewares:
+  github-oauth-ui:
+    client-id-env: $GITHUB_OAUTH_CLIENT_ID_ENV_VAR_NAME
+    client-secret-env: $GITHUB_OAUTH_CLIENT_SECRET_ENV_VAR_NAME
+```
+
+
 When creating the OAuth app at [github.com](https://github.com/settings/developers), use `REGISTRY_URL/-/oauth/callback` as the callback URL.
 
 ## License

@@ -30,8 +30,8 @@ export class OAuthCallback {
    */
   public middleware = async (req: Request, res: Response, next: NextFunction) => {
     const code = req.query.code
-    const clientId = this.config['client-id']
-    const clientSecret = this.config['client-secret']
+    const clientId = this.config['client-id'] || process.env[this.config['client-id-env']]
+    const clientSecret = this.config['client-secret'] || process.env[this.config['client-secret-env']]
 
     try {
       const oauth = await this.github.requestAccessToken(code, clientId, clientSecret)
